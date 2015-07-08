@@ -1,0 +1,104 @@
+# encoding: utf-8
+# javascript的中英文配置文件
+zh-cn:
+  javascript:
+    actions:
+      new_a: '新建一个'
+      create: '创建'
+      update: '更新'
+      back: '返回'
+      export: '导出'
+      systemMsg: '系统提示'
+      cancel: '取消'
+      save: '保存'
+      submit: '提交'
+      delete: '删除'
+      saveAndRquest: '保存并提交'
+      pass: '批准'
+      lost: '打回'
+      next: '下一步'
+      copyTo: '抄送'
+      query: '查找'
+      calendarView: '日历'
+      listView: '列表'
+      confirm: '确认'
+      add: '添加'
+      select: '选择'
+      all: '全部'
+    views:
+      choosen:
+        no_results_text: '未找到此选项!'
+      position:
+        mapDialogTitle: '查看地图信息'
+        showMap: '查看地图'
+      jg_grid:
+        loadtext: '数据加载中'
+        export: '导出'
+        openSearchPanel: '打开搜索'
+        closeSearchPanel: '收起'
+      date:
+        days: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日']
+        weekdays: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日']
+        daysShort: ['周日', '周一', '周二', '周三', '周四', '周五', '周六', '周日']
+        weekdaysShort: ['周日', '周一', '周二', '周三', '周四', '周五', '周六', '周日']
+        weekdaysMin: ['日', '一', '二', '三', '四', '五', '六']
+        daysMin:  ['日', '一', '二', '三', '四', '五', '六', '日']
+        months: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
+        monthsShort: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
+        today: '今日'
+      form:
+        setShop: '选择店铺'
+        createTask: '创建任务'
+        createRectifyTask: '创建整改任务'
+        setOwner: '指派'
+        confirmSetOwner: '您确定要指派给该用户？'
+        confirmCopyTo: '您确定要抄送给这些用户？'
+        confirmCreateRectifyTask: '您确定要创建整改任务吗？'
+        confirmSubmitFormData: '表单数据提交后将不能编辑, 您确定要提交吗？'
+        confirmDeleteFormData: '表单数据删除后将不能恢复, 您确定要删除吗？'
+      personal_plan:
+        pleaseSelectAShop: '请至少选择一个店铺'
+        pleaseInputTaskObject: '请输入任务对象'
+        confirmPassEvent: '您确定要批准该事项吗？'
+        confirmLostEvent: '您确定要打回该事项吗？'
+        confirmDeleteEvent: '您确定要删除该事项吗？'
+      shop_plan:
+        pleaseSelectAShop: '请至少选择一个店铺'
+        pleaseInputName: '请输入名称'
+        confirmPassEvent: '您确定要批准该事项吗？'
+        confirmLostEvent: '您确定要打回该事项吗？'
+        confirmDeleteEvent: '您确定要删除该事项吗？'
+      travel_plan:
+        confirmPassEvent: '您确定要批准该事项吗？'
+        confirmLostEvent: '您确定要打回该事项吗？'
+        confirmDeleteEvent: '您确定要删除该事项吗？'
+        titleNoBeNull: '事项不能为空'
+        startDateMustInDate: '起始日期必须在 $start 和 $end之间'
+        endDateMustInDate: '结束日期必须在 $start 和 $end之间'
+        startDateMustBeLessEndDate: '起始日期不能大于结束日期'
+      user:
+        password_change: '密码修改'
+        password_cannot_be_null: '密码不能为空'
+        old_password_is_not_true: '原密码不正确'
+        password_change_success: '密码更改成功'
+      rich_text:
+        font: '字体'
+        fontSize: '字号'
+        bold: '粗体'
+        italic: '斜体'
+        strikethrough: '删除'
+        underline: '下划线'
+        insertunorderedlist: '项目编号'
+        insertorderedlist:  '数字标号'
+        outdent: '减少缩进'
+        indent: '增加缩进'
+        justifyleft: '左对齐'
+        justifycenter: '居中'
+        justifyright: '右对齐'
+        justifyfull: '两端对齐'
+        foreColor: '字体颜色'
+        undo: '后进一步(快捷键 Ctrl Z)'
+        redo: '前退一步(快捷键 Ctrl Y)'
+      shop_select:
+        title: '门店选择'
+

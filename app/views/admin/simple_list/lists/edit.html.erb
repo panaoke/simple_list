@@ -1,0 +1,10 @@
+<%= render partial: 'form',
+          locals: {
+                  action: :edit,
+                  form_options: {
+                    method: :PUT,
+                    class: 'my-form simple_list_form',
+                    action: "/admin/simple_list/#{model_table_name}/#{params[:id]}"
+                  }
+          }
+%>

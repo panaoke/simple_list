@@ -1,0 +1,23 @@
+<div class="col-sm-12" >
+  <table id="simple_list_table"></table>
+  <div id="simple_list_table_pager"></div>
+</div>
+
+<script type="text/javascript">
+  $(function() {
+      $('#simple_list_table').defaultJqGrid(<%= raw list_js_options("#simple_list_table_pager").to_json%>);
+
+      $(document).on('mousedown', '#new_btn .ui-pg-div', function(e) {
+          e.stopPropagation();
+          AceExt.dialog({
+              title: i18n.action('new_a') + '<%= model_label%>',
+              url: '<%= "/admin/simple_list/#{model_table_name}/new"%>',
+              submitBtn: true
+          }, $(this));
+          return false;
+      })
+  })
+
+</script>
+
+

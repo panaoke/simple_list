@@ -1,0 +1,10 @@
+<%= render partial: 'form',
+           locals: {
+                   action: :new,
+                   form_options: {
+                           method: :POST,
+                           class: 'my-form simple_list_form',
+                           action: "/admin/simple_list/#{model_singularize_name.tableize}"
+                   }
+           }
+%>

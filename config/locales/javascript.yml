@@ -1,0 +1,43 @@
+# encoding: utf-8
+# javascript的中英文配置文件
+en:
+  javascript:
+    actions:
+      back: 'back'
+      export: 'export'
+      systemMsg: 'systemMsg'
+      cancel: 'cancel'
+      save: 'save'
+      submit: 'submit'
+      delete: 'delete'
+      saveAndRquest: 'saveAndRquest'
+      pass: 'pass'
+      lost: 'lost'
+      next: 'next'
+      copyTo: 'copyTo'
+      query: 'query'
+      calendarView: 'calendarView'
+      listView: 'listView'
+      confirm: 'confirm'
+      add: 'add'
+      select: 'select'
+      all: 'all'
+    views:
+      jg_grid:
+        loadtext: 'loadtext'
+        export: 'export'
+        openSearchPanel: 'openSearchPanel'
+        closeSearchPanel: 'closeSearchPanel'
+      date:
+        days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+        weekdays: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+        daysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        weekdaysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        weekdaysMin: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']
+        daysMin: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']
+        months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
+                'September', 'October',
+                'November', 'December']
+        monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+        today: 'Today'
+

@@ -1,0 +1,26 @@
+<%= javascript_include_tag "simple_list/simple_list_form" %>
+
+
+<%= ace_from({code: model_singularize_name, method: form_options[:method],
+              html: {
+                   class: form_options[:class], action: form_options[:action]}}) do |f| %>
+
+  <% action_form_fields(action).each do |field, config|
+    config[:code] = [model_singularize_name, field].join('_')
+    config[:code] = "#{model_singularize_name}[#{field}]"
+    config[:value] = @model.send(field) rescue nil
+    if [:radio, :checkbox, :choose, :multiple_choose].include?(config[:type].to_sym)
+      config[:collection] ||= @model.class.send(config[:collection_method] || "#{field}_collection")
+    end
+
+  %>
+      <%= ace_input(config.symbolize_keys) %>
+  <% end %>
+<% end %>
+
+
+<script>
+    $(function() {
+        $('.simple_list_form').extPlugins();
+    })
+</script>

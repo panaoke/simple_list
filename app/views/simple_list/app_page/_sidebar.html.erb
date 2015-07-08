@@ -1,0 +1,46 @@
+<div class="sidebar" id="sidebar">
+<script type="text/javascript">
+  try {
+    ace.settings.check('sidebar', 'fixed')
+  } catch (e) {
+  }
+</script>
+
+  <ul class="nav nav-list">
+    <% current_link_groups.each do |code, link_group|%>
+      <% links = link_group['links'] %>
+      <% unless links.blank? %>
+        <% current_group_flag = links.keys.include?(@current_app) %>
+          <li class="<%= (current_group_flag ? 'active open' : nil )%>">
+            <a href="#" class="dropdown-toggle">
+              <i class="<%= link_group['icon']%>"></i>
+              <span class="menu-text"> <%= view_menu(link_group['label'])%> </span>
+
+              <b class="arrow icon-angle-down"></b>
+            </a>
+            <ul class="submenu">
+              <% links.each do |link_code, link_config|%>
+                <li class="<%= (current_group_flag && (link_code == @current_app) ? 'active' : '')%>">
+                <a href="<%= link_config['url'] %>" target="<%= link_config['target'] || "_self" %>">
+                  <%= view_menu(link_config['label'])%>
+                </a>
+              </li>
+              <% end %>
+            </ul>
+          </li>
+      <% end %>
+    <% end %>
+  </ul>
+<!-- /.nav-list -->
+
+<div class="sidebar-collapse" id="sidebar-collapse">
+  <i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
+</div>
+
+<script type="text/javascript">
+  try {
+    ace.settings.check('sidebar', 'collapsed')
+  } catch (e) {
+  }
+</script>
+</div>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= @_page_title %></title>
+  <%=javascript_include_tag "ace_skin/jquery-2.0.3"%>
+
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+
+  <%=javascript_include_tag "ace_skin/jquery-2.0.3"%>
+  <%=javascript_include_tag "ace_skin/i18n"%>
+  <script>
+
+      i18n.set_config(<%= raw javascript_i18n.to_json%>, '<%= locale%>');
+
+  </script>
+
+  <%= stylesheet_link_tag "simple_list/application", :media => "all" %>
+  <%= javascript_include_tag "simple_list/application"%>
+
+  <%= stylesheet_link_tag "ace_skin/application", :media => "all" %>
+  <%= javascript_include_tag "ace_skin/application"%>
+  <%= csrf_meta_tags %>
+  <link rel="shortcut icon" href="/favicon.ico"/>
+</head>
+<body>
+<%=render(:partial=>"simple_list/app_head")%>
+<%=render(:partial=>"simple_list/app_page")%>
+
+</body>
+</html>
+<script>
+  $(function() {
+      $('body').extPlugins();
+  })
+</script>

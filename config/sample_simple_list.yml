@@ -1,0 +1,39 @@
+default:
+ per_page: 20
+ is_show_primary_key: true
+model:
+  user:
+    list:
+      name: ''
+      desc: ''
+      columns:
+        name:
+          width: '20%'
+          is_sort: ture
+          desc: ''
+          sort:
+            field: '`users`.`name`'
+        nickname:
+          width: '40%'
+          is_sort: ture
+          desc: ''
+          sort:
+            field: '`users`.`name`'
+        operate:
+          width: '40%'
+          is_sort: ture
+          desc: ''
+          sort:
+            field: '`users`.`is_online`'
+    form:
+      name:
+        type: string
+        validation:
+          $required: true
+      nickname:
+        type: string
+        validation:
+          $required: true
+      introduce:
+        type: text
+

@@ -1,0 +1,23 @@
+<div class="breadcrumbs" id="breadcrumbs">
+  <script type="text/javascript">
+    try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
+  </script>
+
+  <ul class="breadcrumb">
+    <% (@breadcrumbs || []).each_with_index do |breadcrumb, index|%>
+      <% breadcrumb = breadcrumb.symbolize_keys%>
+      <% last_flag = (index == (@breadcrumbs.length - 1)) %>
+      <li class="<%= (last_flag ? :active : nil) rescue nil%>">
+        <% label = breadcrumb[:label].blank? ? view_message(breadcrumb[:action]) : breadcrumb[:label]%>
+        <% if last_flag%>
+          <%= label %>
+        <% else %>
+          <a href="<%= breadcrumb[:url]%>">
+            <%= label %>
+          </a>
+        <% end %>
+      </li>
+    <% end %>
+  </ul><!-- .breadcrumb -->
+
+</div>
