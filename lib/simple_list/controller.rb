@@ -8,6 +8,9 @@ module SimpleList
 				self.send(:before_filter, :refresh_config)
 				self.send(:before_filter, :get_javascript_i18n)
 			end
+			if SimpleList::Config.config[:default][:open_permission_manage]
+				self.send(:before_filter, :check_user_ability)
+			end
 			self.send(:before_filter, :filter_post_params, {only: [:create, :update]})
 			self.send(:before_filter, :finder_query_condition, {only: [:list]})
 			self.send(:before_filter, :model_table_name, :fetch_header)
@@ -16,6 +19,7 @@ module SimpleList
 			self.send(:helper, Helper)
 			self.send(:layout, 'simple_list')
 			self.send(:attr_accessor, :_config)
+
 		end
 
 		def index
@@ -23,15 +27,15 @@ module SimpleList
 		end
 
 		def new
-			render '/admin/simple_list/lists/new'
+			render '/admin/simple_list/lists/new', layout: nil
 		end
 
 		def edit
-			render '/admin/simple_list/lists/edit'
+			render '/admin/simple_list/lists/edit', layout: nil
 		end
 
 		def show
-			render '/admin/simple_list/lists/show'
+			render '/admin/simple_list/lists/show', layout: nil
 		end
 
 		def create
@@ -64,7 +68,7 @@ module SimpleList
 
 		def list
 			@result = model_class.by_scopes(@conditions).paginate(@paginate)
-			render '/admin/simple_list/lists/list.json.erb'
+			render '/admin/simple_list/lists/list.json.erb', layout: nil
 		end
 
 		protected
@@ -91,6 +95,14 @@ module SimpleList
 			if @_env['HTTP_WITHOUT_LAYOUT'] == 'true'
 				@_action_has_layout = false
 			end
+		end
+
+		def check_user_ability
+			@_permission_manage = true
+			return redirect_to '/admin' unless can_read?
+
+			action = params[:action].to_sym
+			return redirect_to '/admin' if [:new, :edit, :create, :update].include?(action) && !can_write?
 		end
 
 	end

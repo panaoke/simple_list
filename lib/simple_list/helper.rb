@@ -14,6 +14,11 @@ module SimpleList
 			def get_javascript_i18n
 				@_javascript_i18n = (I18n.t!("javascript") rescue {})
 			end
+
+			def permission_manage?
+				@_permission_manage
+			end
+
 		end
 
 		include Common
@@ -84,7 +89,7 @@ module SimpleList
 
 		def list_js_options(table_pager_id)
 			column_names = model_list_config[:list][:columns].map{|_, config| config[:zh_name]}
-			{
+			options = {
 					url: "/admin/simple_list/#{model_singularize_name.tableize}/list",
 					colNames: column_names,
 					colModel: model_list_config[:list][:columns].values,
@@ -92,22 +97,25 @@ module SimpleList
 					pager: table_pager_id,
 					searchBtn: true,
 					export_btn: false,
-					pagerBtns: [
-						{
-								caption: "新建",
-								buttonicon: "icon-folder-open-alt",
-								title: "新建",
-								id: "new_btn",
-								css: 'new_btn'
-						}
-					]
+					pagerBtns: [ ]
 			}
+			if can_write?
+				options[:pagerBtns] << {
+						caption: "新建",
+						buttonicon: "icon-folder-open-alt",
+						title: "新建",
+						id: "new_btn",
+						css: 'new_btn'
+				}
+			end
+
+			options
 		end
 
 		def list_column_operate(record)
 			links = []
-			links << edit_btn(record)
-			links << delete_btn(record)
+			links << edit_btn(record) if can_write?
+			links << delete_btn(record) if can_write?
 			content_tag :div do
 				links.compact.join(' | ').html_safe
 			end

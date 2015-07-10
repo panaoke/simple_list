@@ -1,6 +1,6 @@
-
 require 'active_support'
 require 'will_paginate'
+require 'cancan'
 module SimpleList
 	extend ActiveSupport::Autoload
 
