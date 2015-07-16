@@ -2,4 +2,4 @@ zh-cn:
   simple_list:
     edit: 编辑
     delete: 删除
-    confirm_delete: <h4>您确定要删除<span class='red'><%= record_name%></span>吗?</h4>
+    confirm_delete: "<h4>您确定要删除 <span class='red'><%= model_label%></span>: <span class='green'><%= record_name%></span> 吗?</h4>"

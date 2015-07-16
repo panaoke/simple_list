@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.authors     = ['panaoke']
   s.email       = ['panaoke@gmail.com']
   s.homepage    = 'https://github.com/panaoke/simple_list'
-  s.summary     = 'Support standardization CRUD and list  for model'
+  s.summary     = 'Support standardization CRUD and list for model'
   s.description = 'Support standardization CRUD and list for model'
   s.license     = 'MIT'
 

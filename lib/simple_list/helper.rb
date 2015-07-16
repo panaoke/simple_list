@@ -132,7 +132,7 @@ module SimpleList
 		end
 
 		def delete_btn(record)
-			record_name = "#{model_label} #{record.to_label rescue nil} "
+			record_name = record.name rescue nil
 			link_to list_i18n(:delete), 'javascript:void(0)',
 			        {
 					        'data-ace-confirm' => ERB.new(list_i18n(:confirm_delete)).result(binding),
