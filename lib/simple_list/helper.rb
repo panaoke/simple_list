@@ -87,7 +87,18 @@ module SimpleList
 			@model_columns = model_list_config[:list][:columns].keys
 		end
 
+		def format_filter_config
+			@_filter_config = model_list_config[:list][:filter] || {}
+			@_filter_config[:filterConfig] ||= {}
+			@_filter_config[:filterConfig].each do |code, config|
+				if config[:type] == 'choose'
+						config[:collection] = config[:collection] ||= model_class.send(config[:collection_method] || "#{code}_collection")
+				end
+			end
+		end
+
 		def list_js_options(table_pager_id)
+			format_filter_config
 			column_names = model_list_config[:list][:columns].map{|_, config| config[:zh_name]}
 			options = {
 					url: "/admin/simple_list/#{model_singularize_name.tableize}/list",
@@ -97,7 +108,8 @@ module SimpleList
 					pager: table_pager_id,
 					searchBtn: true,
 					export_btn: false,
-					pagerBtns: [ ]
+					pagerBtns: [ ],
+					filter: @_filter_config
 			}
 			if can_write?
 				options[:pagerBtns] << {
@@ -108,6 +120,24 @@ module SimpleList
 						css: 'new_btn'
 				}
 			end
+
+			unless @_filter_config[:filterConfig].blank?
+				options[:pagerBtns] << {
+						caption: "搜索",
+						buttonicon: "icon-search",
+						title: "搜索",
+						id: "search-btn",
+						css: 'search-btn'
+				}
+			end
+
+			options[:pagerBtns] << {
+					caption: "下载",
+					buttonicon: "icon-download-alt",
+					title: "下载",
+					id: "export-btn",
+					css: 'export-btn'
+			}
 
 			options
 		end

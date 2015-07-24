@@ -77,9 +77,9 @@ module SimpleList
 		end
 
 		def finder_query_condition
-			@conditions = params[model_singularize_name] || {}
-			@page = params[:page] || 1
-			@per_page = params[:per_page] || model_list_config[:per_page] || list_config[:per_page] || 10
+			@conditions = (JSON.parse(params[:conditions]) || []) rescue []
+			@page = (params[:page] || 1).to_i
+			@per_page = (params[:per_page] || params[:rows] || model_list_config[:per_page] || list_config[:per_page] || 10).to_i
 			@paginate = {page: @page, per_page: @per_page}
 		end
 
