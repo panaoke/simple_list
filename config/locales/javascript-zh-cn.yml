@@ -25,6 +25,7 @@ zh-cn:
       add: '添加'
       select: '选择'
       all: '全部'
+      show: '查看'
     views:
       choosen:
         no_results_text: '未找到此选项!'

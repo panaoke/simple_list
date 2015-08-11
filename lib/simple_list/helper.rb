@@ -51,6 +51,10 @@ module SimpleList
 			end
 		end
 
+		def model_url
+			"/admin/simple_list/#{model_singularize_name.tableize}"
+		end
+
 		def model_table_name
 			@model_table_name ||= self.class.name.sub('Controller', '').split('::').last.tableize
 		end
@@ -79,6 +83,21 @@ module SimpleList
 			model_list_config[:form]["#{action}_fields"] || model_list_config[:form][:fields]
 		end
 
+		def form_fields(action, disabled = false)
+			action_form_fields(action).map do |field, config|
+				config[:code] = [model_singularize_name, field].join('_')
+				config[:code] = "#{model_singularize_name}[#{field}]"
+				config[:value] = @model.send(field) rescue nil
+				if [:radio, :checkbox, :choose, :multiple_choose].include?(config[:type].to_sym)
+					config[:collection] ||= @model.class.send(config[:collection_method] || "#{field}_collection")
+				end
+
+				config[:disabled] = disabled
+
+				config
+			end
+		end
+
 		def model_fields
 			@model_fields = model_list_config[:form][:fields].keys
 		end
@@ -101,7 +120,7 @@ module SimpleList
 			format_filter_config
 			column_names = model_list_config[:list][:columns].map{|_, config| config[:zh_name]}
 			options = {
-					url: "/admin/simple_list/#{model_singularize_name.tableize}/list",
+					url: "#{model_url}/list",
 					colNames: column_names,
 					colModel: model_list_config[:list][:columns].values,
 					caption: model_list_config[:list][:name],
@@ -157,7 +176,16 @@ module SimpleList
 					        'data-update-btn' => true,
 					        'data-title' => "#{list_i18n(:edit)} #{model_label} ( #{record.to_label rescue nil} )",
 					        'data-toggle' => 'dialog',
-					        'data-url' => "/admin/simple_list/#{model_singularize_name}/#{record.id}/edit"
+					        'data-url' => "#{model_url}/#{record.id}/edit"
+			        }
+		end
+
+		def show_btn(record)
+			link_to list_i18n(:show), 'javascript:void(0)',
+			        {
+					        'data-title' => "#{list_i18n(:show)} #{model_label} ( #{record.to_label rescue nil} )",
+					        'data-toggle' => 'dialog',
+					        'data-url' => "#{model_url}/#{record.id}"
 			        }
 		end
 
@@ -167,13 +195,12 @@ module SimpleList
 			        {
 					        'data-ace-confirm' => ERB.new(list_i18n(:confirm_delete)).result(binding),
 					        'data-type' => 'DELETE',
-					        'data-url' => "/admin/simple_list/#{model_singularize_name}/#{record.id}"
+					        'data-url' => "#{model_url}/#{record.id}"
 			        }
 		end
 
-
 		def list_i18n(name)
-			I18n.t!("simple_list.#{name}")
+			I18n.t!("simple_list.#{name}") rescue name.to_s.humanize
 		end
 
 	end

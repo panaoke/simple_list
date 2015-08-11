@@ -11,7 +11,7 @@
           e.stopPropagation();
           AceExt.dialog({
               title: i18n.action('new_a') + '<%= model_label%>',
-              url: '<%= "/admin/simple_list/#{model_table_name}/new"%>',
+              url: '<%= "#{model_url}/new"%>',
               submitBtn: true
           }, $(this));
           return false;
