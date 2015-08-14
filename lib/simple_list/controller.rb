@@ -27,6 +27,7 @@ module SimpleList
 		end
 
 		def new
+			find_filter
 			render '/admin/simple_list/lists/new', layout: nil
 		end
 
@@ -69,7 +70,8 @@ module SimpleList
 		end
 
 		def list
-			@result = model_class.by_scopes(@conditions).paginate(@paginate)
+			find_filter
+			@result = model_class.by_scopes(@filters).by_scopes(@conditions).paginate(@paginate)
 			render '/admin/simple_list/lists/list.json.erb', layout: nil
 		end
 
@@ -83,6 +85,10 @@ module SimpleList
 			@page = (params[:page] || 1).to_i
 			@per_page = (params[:per_page] || params[:rows] || model_list_config[:per_page] || list_config[:per_page] || 10).to_i
 			@paginate = {page: @page, per_page: @per_page}
+		end
+
+		def find_filter
+			@filters = (JSON.parse(params[:filters]) || []) rescue []
 		end
 
 		def refresh_config

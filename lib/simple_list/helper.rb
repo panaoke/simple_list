@@ -87,7 +87,11 @@ module SimpleList
 			action_form_fields(action).map do |field, config|
 				config[:code] = [model_singularize_name, field].join('_')
 				config[:code] = "#{model_singularize_name}[#{field}]"
-				config[:value] = @model.send(field) rescue nil
+				if config[:value]
+					config[:value] = ERB.new(config[:value]).result(binding)
+				else
+					config[:value] = @model.send(field) rescue nil
+				end
 				if [:radio, :checkbox, :choose, :multiple_choose].include?(config[:type].to_sym)
 					config[:collection] ||= @model.class.send(config[:collection_method] || "#{field}_collection")
 				end
@@ -120,10 +124,10 @@ module SimpleList
 			format_filter_config
 			column_names = model_list_config[:list][:columns].map{|_, config| config[:zh_name]}
 			options = {
-					url: "#{model_url}/list",
+					url: "#{model_url}/list?#{params.to_param}",
 					colNames: column_names,
 					colModel: model_list_config[:list][:columns].values,
-					caption: model_list_config[:list][:name],
+					caption: params[:caption] || model_list_config[:list][:name],
 					pager: table_pager_id,
 					searchBtn: true,
 					export_btn: false,
