@@ -85,12 +85,12 @@ module SimpleList
 
 		def form_fields(action, disabled = false)
 			action_form_fields(action).map do |field, config|
+				config = config.clone
 				config[:code] = [model_singularize_name, field].join('_')
 				config[:code] = "#{model_singularize_name}[#{field}]"
 				if config[:value]
 					config[:value] = ERB.new(config[:value].to_s).result(binding) rescue nil
 				else
-					puts field
 					config[:value] = @model.send(field) rescue nil
 				end
 				if [:radio, :checkbox, :choose, :multiple_choose].include?(config[:type].to_sym)
