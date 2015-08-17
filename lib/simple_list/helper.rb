@@ -28,18 +28,18 @@ module SimpleList
 			total = @count / @per_page
 			total += 1 if @count % @per_page > 0
 			{
-				page: @page,
-				per_page: @per_page,
-				model: model_singularize_name,
-				rows: @result.map{|record| column_record(record)},
-				total: total
+					page: @page,
+					per_page: @per_page,
+					model: model_singularize_name,
+					rows: @result.map{|record| column_record(record)},
+					total: total
 			}
 		end
 
 		def column_record(record)
 			model_list_config[:list][:columns].inject({}) do |result,(column_name, column_config)|
 				if respond_to?("list_column_#{column_name}")
-					 result[column_name] = self.send("list_column_#{column_name}", record)
+					result[column_name] = self.send("list_column_#{column_name}", record)
 				else
 					if record.respond_to?(column_name)
 						result[column_name] = record.send(column_name)
@@ -80,7 +80,7 @@ module SimpleList
 		end
 
 		def action_form_fields(action)
-			model_list_config[:form]["#{action}_fields"] || model_list_config[:form][:fields]
+			(model_list_config[:form]["#{action}_fields"] || model_list_config[:form][:fields])
 		end
 
 		def form_fields(action, disabled = false)
@@ -88,8 +88,9 @@ module SimpleList
 				config[:code] = [model_singularize_name, field].join('_')
 				config[:code] = "#{model_singularize_name}[#{field}]"
 				if config[:value]
-					config[:value] = ERB.new(config[:value]).result(binding)
+					config[:value] = ERB.new(config[:value].to_s).result(binding) rescue nil
 				else
+					puts field
 					config[:value] = @model.send(field) rescue nil
 				end
 				if [:radio, :checkbox, :choose, :multiple_choose].include?(config[:type].to_sym)
@@ -97,7 +98,6 @@ module SimpleList
 				end
 
 				config[:disabled] = disabled
-
 				config
 			end
 		end
@@ -115,7 +115,7 @@ module SimpleList
 			@_filter_config[:filterConfig] ||= {}
 			@_filter_config[:filterConfig].each do |code, config|
 				if config[:type] == 'choose'
-						config[:collection] = config[:collection] ||= model_class.send(config[:collection_method] || "#{code}_collection")
+					config[:collection] = config[:collection] ||= model_class.send(config[:collection_method] || "#{code}_collection")
 				end
 			end
 		end
