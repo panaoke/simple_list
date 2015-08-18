@@ -42,10 +42,11 @@ module SimpleList
 		end
 
 		def create
-			@model = model_class.create(params[model_singularize_name].to_hash)
+			@model = model_class.new(params[model_singularize_name].to_hash)
 			render json: {
-				is_success: true,
-				record: @model
+				is_success: @model.save,
+				record: @model,
+			  error_infos: @model.errors.messages.values.flatten
       }
 		end
 
@@ -53,7 +54,8 @@ module SimpleList
 			status = @model.update_attributes(params[model_singularize_name].to_hash)
 			render json: {
 			   is_success: status,
-			   record: @model
+			   record: @model,
+			   error_infos: @model.errors.messages.values.flatten
 			}
 		end
 
