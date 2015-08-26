@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <title><%I18n.t('app.title')%></title>
+  <meta charset="utf-8" />
+  <meta name="description" content="overview &amp; stats" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <%=stylesheet_link_tag 'application'%>
+  <%=stylesheet_link_tag 'simple_list/login'%>
+  <%= csrf_meta_tag %>
+  <link rel='shortcut icon' href='/favicon.ico' />
+</head>
+<body class="login-bg">
+<%= yield %>
+
+
+<script type="text/javascript">
+    window.jQuery || document.write("<script src='/assets/ace_skin/jquery-2.0.3.js'>"+"<"+"/script>");
+</script>
+
+<!-- <![endif]-->
+
+
+<script type="text/javascript">
+    if("ontouchend" in document) document.write("<script src='/assets/ace_skin/jquery.mobile.custom.js'>"+"<"+"/script>");
+</script>
+
+</body>
+
+</html>
+

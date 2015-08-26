@@ -7,6 +7,7 @@ module SimpleList
         simple_list/applcation.js
 				simple_list/simple_list_form.js
         simple_list/application.css
+        simple_list/login.css
       )
 
       app.config.i18n.load_path += Dir[File.join(SimpleList.root, 'config', 'locales',"**", '*.{rb,yml}')]

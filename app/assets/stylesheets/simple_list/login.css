@@ -1,0 +1,85 @@
+.login-bg {
+    background-color: #f2f2f2;
+}
+.login-well {
+    min-height: 20px;
+    padding: 19px;
+    margin-bottom: 20px;
+}
+.login-box {
+    width: 300px;
+    float: left;
+    margin-left: -10px;
+    margin-top: 88px;
+}
+.main_box {
+    width: 660px;
+    height: 375px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.login-title {
+    font-family: Microsoft YaHei;
+    font-size: 16px;
+    letter-spacing: 10px;
+    font-weight: bold;
+    color: #717171;
+    margin-left: 50px;
+    margin-bottom: -10px;
+}
+.login_box {
+    overflow: hidden;
+    margin-bottom: 50px;
+}
+.login_img img {
+    float: left;
+}
+.footer_box {
+    width: 660px;
+    overflow: hidden;
+    margin: 0 auto;
+    position: absolute;
+    bottom: 30px;
+}
+.main-copyright {
+    margin-left: 55px;
+}
+.joowing_logo {
+    margin-left: 26.5%;
+}
+.error_info {
+    height: 1em;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.form-group .input-group {
+    width: 262px;
+}
+
+.form-group .input-group input {
+    background-color: #ffffff;
+    border-radius: 4px !important;
+}
+
+.form-group .input-group-addon {
+    display: block;
+    position: absolute;
+    white-space: nowrap;
+    right: 30px;
+    top: 4px;
+    width: 75px;
+    background-color: inherit;
+    border: none;
+}
+.login_img {
+    width: 50%;
+    float: left;
+    height: 100%;
+}
+.login_img img {
+    width: 100%;
+}
+.login-box {
+    margin-top: 0;
+}
+

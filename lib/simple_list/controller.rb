@@ -23,7 +23,7 @@ module SimpleList
 		end
 
 		def index
-			render '/admin/simple_list/lists/index', layout: 'simple_list'
+			render '/admin/simple_list/lists/index', layout: 'simple_list/application'
 		end
 
 		def new
