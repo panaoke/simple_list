@@ -1,4 +1,7 @@
 zh-cn:
+  actions:
+    yes: 是
+    no: 否
   simple_list:
     edit: 编辑
     delete: 删除
