@@ -12,7 +12,6 @@ $(function() {
             }else {
                 bootbox.alert(data.error_infos.join("<br>"))
             }
-
         }, function() {
             if(errorCall != undefined) {
                 errorCall()

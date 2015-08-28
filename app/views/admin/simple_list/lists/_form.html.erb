@@ -1,5 +1,6 @@
 <%= javascript_include_tag "simple_list/simple_list_form" %>
-
+<%= javascript_tags %>
+<%= stylesheet_tags %>
 <%= ace_from({code: model_singularize_name, method: form_options[:method],
               html: {
                    class: form_options[:class], action: form_options[:action]}}) do |f| %>

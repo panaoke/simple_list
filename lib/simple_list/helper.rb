@@ -75,6 +75,14 @@ module SimpleList
 			@list_config ||= SimpleList::Config.config[:default]
 		end
 
+		def javascript_tags
+
+		end
+
+		def stylesheet_tags
+
+		end
+
 		def model_list_config
 			@model_list_config||= SimpleList::Config.config[:model][model_singularize_name]
 		end
