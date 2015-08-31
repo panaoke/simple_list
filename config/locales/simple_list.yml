@@ -2,6 +2,8 @@ zh-cn:
   actions:
     yes: 是
     no: 否
+  action:
+    change_password: 修改密码
   simple_list:
     edit: 编辑
     delete: 删除

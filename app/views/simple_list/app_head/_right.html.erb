@@ -1,4 +1,5 @@
 <div class="navbar-header pull-right" role="navigation">
+
   <ul class="nav ace-nav">
     <li class="light-blue">
       <a data-toggle="dropdown" href="#" class="dropdown-toggle">
@@ -12,17 +13,19 @@
 
       <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
 
-        <!--<li>-->
-          <!--<a href="javascript:void(0);" id='user_password'>-->
-            <!--<i class="icon-user"></i>-->
-            <!--<%#= view_action("change_password")%>-->
-          <!--</a>-->
-        <!--</li>-->
+        <li>
+          <a href="javascript:void(0);" data-toggle="dialog" data-url="/admin/sessions/set_psw"
+             data-submit-btn="true"
+             data-title="<%= view_action("change_password")%>">
+            <i class="icon-user"></i>
+            <%= view_action("change_password")%>
+          </a>
+        </li>
 
         <li class="divider"></li>
 
         <li>
-          <a href="/admin/logout">
+          <a href="javascript:void(0);" class="logout">
             <i class="icon-off"></i>
             <%= view_action("logout")%>
           </a>
@@ -32,7 +35,9 @@
   </ul><!-- /.ace-nav -->
 </div><!-- /.navbar-header -->
 <script>
-  $('#user_password').on("click",function() {
-      userpassword.changePasswordlEvent()
+  $(function() {
+      $('.logout').on('click', function() {
+          location.href = "/admin/logout"
+      });
   })
 </script>
