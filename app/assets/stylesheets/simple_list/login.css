@@ -65,11 +65,14 @@
     display: block;
     position: absolute;
     white-space: nowrap;
-    right: 30px;
-    top: 4px;
-    width: 75px;
+    height: 34px;
+    width: 100px;
+    right: 0;
     background-color: inherit;
     border: none;
+    background: #DDD;
+    z-index: 2;
+    border: 1px solid #ccc;
 }
 .login_img {
     width: 50%;
