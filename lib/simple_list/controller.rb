@@ -67,10 +67,6 @@ module SimpleList
 			}
 		end
 
-		def current_app
-			@current_app = list_config[:current_app] || model_singularize_name
-		end
-
 		def list
 			find_filter
 			@result = model_class.by_scopes(@filters).by_scopes(@conditions).paginate(@paginate)

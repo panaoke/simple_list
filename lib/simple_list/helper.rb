@@ -215,6 +215,10 @@ module SimpleList
 			I18n.t!("simple_list.#{name}") rescue name.to_s.humanize
 		end
 
+		def current_app
+			@current_app = list_config[:current_app] || model_singularize_name
+		end
+
 	end
 end
 

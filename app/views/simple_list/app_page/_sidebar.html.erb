@@ -10,7 +10,7 @@
     <% current_link_groups.each do |code, link_group|%>
       <% links = link_group['links'] %>
       <% unless links.blank? %>
-        <% current_group_flag = links.keys.include?(@current_app) %>
+        <% current_group_flag = links.keys.include?(current_app) %>
           <li class="<%= (current_group_flag ? 'active open' : nil )%>">
             <a href="#" class="dropdown-toggle">
               <i class="<%= link_group['icon']%>"></i>
@@ -20,7 +20,7 @@
             </a>
             <ul class="submenu">
               <% links.each do |link_code, link_config|%>
-                <li class="<%= (current_group_flag && (link_code == @current_app) ? 'active' : '')%>">
+                <li class="<%= (current_group_flag && (link_code == current_app) ? 'active' : '')%>">
                 <a href="<%= link_config['url'] %>" target="<%= link_config['target'] || "_self" %>">
                   <%= view_menu(link_config['label'])%>
                 </a>
