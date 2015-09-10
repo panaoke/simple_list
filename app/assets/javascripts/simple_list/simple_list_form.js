@@ -1,4 +1,5 @@
 $(function() {
+
     $('form.simple_list_form').on('submit', function (e, successCall, errorCall) {
         e.preventDefault();
         var $self = $(this);
@@ -20,4 +21,6 @@ $(function() {
 
         return false;
     });
+
+
 });

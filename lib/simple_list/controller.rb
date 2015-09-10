@@ -69,13 +69,17 @@ module SimpleList
 
 		def list
 			find_filter
-			@result = model_class.by_scopes(@filters).by_scopes(@conditions).paginate(@paginate)
+			@result = list_scope(model_class).by_scopes(@filters).by_scopes(@conditions).paginate(@paginate)
 			render '/admin/simple_list/lists/list.json.erb', layout: nil
 		end
 
 		protected
 		def filter_post_params
 			params.require(model_singularize_name).permit(model_fields)
+		end
+
+		def list_scope(model_class)
+			model_class
 		end
 
 		def finder_query_condition

@@ -15,7 +15,15 @@
               submitBtn: true
           }, $(this));
           return false;
-      })
+      });
+
+      $(document).on('ajaxSubmitSuccess', '#simple_list_table', function(e) {
+          $('#simple_list_table').trigger('reloadGrid');
+      });
+
+      $(document).on('ajaxSubmitFailed', '#simple_list_table', function(e) {
+          $('#simple_list_table').trigger('reloadGrid');
+      });
   })
 
 </script>
