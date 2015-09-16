@@ -188,7 +188,7 @@ module SimpleList
 					        'data-update-btn' => true,
 					        'data-title' => "#{list_i18n(:edit)} #{model_label} ( #{record.to_label rescue nil} )",
 					        'data-toggle' => 'dialog',
-					        'data-url' => "#{model_url}/#{record.id}/edit"
+					        'data-url' => "#{model_url}/#{record.id}/edit?#{params.to_param}"
 			        }
 		end
 
@@ -197,7 +197,7 @@ module SimpleList
 			        {
 					        'data-title' => "#{list_i18n(:show)} #{model_label} ( #{record.to_label rescue nil} )",
 					        'data-toggle' => 'dialog',
-					        'data-url' => "#{model_url}/#{record.id}"
+					        'data-url' => "#{model_url}/#{record.id}?#{params.to_param}"
 			        }
 		end
 
@@ -207,7 +207,7 @@ module SimpleList
 			        {
 					        'data-ace-confirm' => ERB.new(list_i18n(:confirm_delete)).result(binding),
 					        'data-type' => 'DELETE',
-					        'data-url' => "#{model_url}/#{record.id}"
+					        'data-url' => "#{model_url}/#{record.id}?#{params.to_param}"
 			        }
 		end
 
