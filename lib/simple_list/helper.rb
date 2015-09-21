@@ -36,6 +36,12 @@ module SimpleList
 			}
 		end
 
+		def list_per_page
+			per_page = (params[:per_page] || params[:rows] || model_list_config[:per_page] || list_config[:per_page] || 10).to_i
+			per_page = 10 if per_page == 0
+			per_page
+		end
+
 		def column_record(record)
 			model_list_config[:list][:columns].inject({}) do |result,(column_name, column_config)|
 				if respond_to?("list_column_#{column_name}")
@@ -140,7 +146,8 @@ module SimpleList
 					searchBtn: true,
 					export_btn: false,
 					pagerBtns: [ ],
-					filter: @_filter_config
+					filter: @_filter_config,
+					rowNum: list_per_page
 			}
 			if can_write?
 				options[:pagerBtns] << {

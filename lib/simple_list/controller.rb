@@ -85,7 +85,7 @@ module SimpleList
 		def finder_query_condition
 			@conditions = (JSON.parse(params[:conditions]) || []) rescue []
 			@page = (params[:page] || 1).to_i
-			@per_page = (params[:per_page] || params[:rows] || model_list_config[:per_page] || list_config[:per_page] || 10).to_i
+			@per_page = list_per_page
 			@paginate = {page: @page, per_page: @per_page}
 		end
 
