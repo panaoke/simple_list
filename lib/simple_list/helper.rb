@@ -177,7 +177,14 @@ module SimpleList
 					css: 'export-btn'
 			}
 
+			page_btns(options)
+
 			options
+		end
+
+		# 这是一个钩子方法, 用来让资料实现并覆盖该方法
+		def page_btns(options)
+
 		end
 
 		def list_column_operate(record)
