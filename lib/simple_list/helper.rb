@@ -32,7 +32,8 @@ module SimpleList
 					per_page: @per_page,
 					model: model_singularize_name,
 					rows: @result.map{|record| column_record(record)},
-					total: total
+					total: total,
+			    caption: @_table_caption
 			}
 		end
 
