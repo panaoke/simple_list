@@ -190,6 +190,7 @@ module SimpleList
 
 		def list_column_operate(record)
 			links = []
+			links << show_btn(record)
 			links << edit_btn(record) if can_write?
 			links << delete_btn(record) if can_write?
 			content_tag :div do
