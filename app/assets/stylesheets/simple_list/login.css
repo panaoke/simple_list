@@ -11,6 +11,7 @@
     min-width: 320px;
     margin: 0 auto;
     overflow: hidden;
+    margin-top: 20%;
 }
 .login-title {
     font-family: Microsoft YaHei;
