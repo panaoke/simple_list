@@ -6,15 +6,9 @@
     padding: 19px;
     margin-bottom: 20px;
 }
-.login-box {
-    width: 300px;
-    float: left;
-    margin-left: -10px;
-    margin-top: 88px;
-}
 .main_box {
-    width: 660px;
-    height: 375px;
+    width: 50%;
+    min-width: 320px;
     margin: 0 auto;
     overflow: hidden;
 }
@@ -53,7 +47,10 @@
     margin-bottom: 5px;
 }
 .form-group .input-group {
-    width: 262px;
+    width: 100%;
+}
+.form-group button {
+    width: 100%;
 }
 
 .form-group .input-group input {
@@ -74,13 +71,12 @@
     z-index: 2;
     border: 1px solid #ccc;
 }
-.login_img {
-    width: 50%;
-    float: left;
-    height: 100%;
-}
 .login_img img {
     width: 100%;
+}
+.login_img {
+    min-width: 320px;
+    min-height: 110px;
 }
 .login-box {
     margin-top: 0;

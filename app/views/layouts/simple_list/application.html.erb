@@ -25,6 +25,26 @@
 
 </body>
 </html>
+<!--适配手机等便携设备-->
+<style>
+    @media screen and (max-width: 1000px) {
+        .ui-jqgrid .ui-jqgrid-bdiv {
+            min-width: 1300px !important;
+        }
+        .ui-jqgrid .ui-jqgrid-hdiv {
+            min-width: 1300px !important;
+        }
+        .ui-jqgrid .ui-jqgrid-hdiv table {
+            min-width: 1300px !important;
+        }
+        .ui-jqgrid .ui-jqgrid-bdiv table {
+            min-width: 1300px !important;
+        }
+        .ui-jqgrid-view {
+            min-width: 1300px !important;
+        }
+    }
+</style>
 <script>
   $(function() {
       $('body').extPlugins();
