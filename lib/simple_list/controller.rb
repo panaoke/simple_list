@@ -69,7 +69,7 @@ module SimpleList
 
 		def list
 			find_filter
-			@result = list_scope(model_class).by_scopes(@filters).by_scopes(@conditions).paginate(@paginate)
+			@result = list_scope(model_class).by_scopes(@filters).by_scopes(@conditions).list_order(@_order).paginate(@paginate)
 			render '/admin/simple_list/lists/list.json.erb', layout: nil
 		end
 
@@ -87,6 +87,10 @@ module SimpleList
 			@page = (params[:page] || 1).to_i
 			@per_page = list_per_page
 			@paginate = {page: @page, per_page: @per_page}
+			@_order = {}
+			unless params[:sidx].blank?
+			@_order[params[:sidx]] = params[:sord]
+			end
 		end
 
 		def find_filter

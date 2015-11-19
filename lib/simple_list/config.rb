@@ -14,6 +14,12 @@ module SimpleList
 
 		def load
 			@config = HashWithIndifferentAccess.new(YAML.load_file(@path))
+			Dir.glob(File.join(Rails.root, "config", 'simple_list', "*.yml")).each do |path|
+				HashWithIndifferentAccess.new(YAML.load_file(path)).each do |key, value|
+					@config[:model][key] = value
+				end
+			end
+			@config
 		end
 
 		class << self
