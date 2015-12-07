@@ -75,7 +75,7 @@ module SimpleList
 		end
 
 		def model_class
-			@model_class ||= Object.const_get(model_table_name.classify)
+			@model_class ||= Object.const_get(model_list_config[:class_name] || model_table_name.classify)
 		end
 
 		def list_config
