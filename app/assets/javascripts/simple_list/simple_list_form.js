@@ -4,16 +4,24 @@ $(function() {
         e.preventDefault();
         var $self = $(this);
         $self.ajaxSubmit(function(data) {
-            console.log(data);
             if(data.is_success == true) {
                 if(successCall != undefined) {
                     successCall()
                 }
                 $(e.target).trigger('submitSuccess');
             }else {
-                bootbox.alert(data.error_infos.join("<br>"))
+                bootbox.alert(
+                    {
+                        className: 'alert-dialog',
+                        message: data.error_infos.join("<br>"),
+                        callback: function() {
+                            $self.addClass('active');
+                        }
+                    }
+                )
             }
         }, function() {
+            isLoading = false;
             if(errorCall != undefined) {
                 errorCall()
             }
@@ -22,5 +30,4 @@ $(function() {
         return false;
     });
 
-
-});
+}, jQuery);
