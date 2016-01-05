@@ -33,7 +33,8 @@ module SimpleList
 					model: model_singularize_name,
 					rows: @result.map{|record| column_record(record)},
 					total: total,
-			    caption: @_table_caption
+			    caption: @_table_caption,
+			    count: @count
 			}
 		end
 
