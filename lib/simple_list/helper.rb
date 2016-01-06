@@ -143,7 +143,7 @@ module SimpleList
 					url: "#{model_url}/list?#{params.to_param}",
 					colNames: column_names,
 					colModel: model_list_config[:list][:columns].values,
-					caption: params[:caption] || model_list_config[:list][:name],
+					caption: params[:caption] || @caption || model_list_config[:list][:name],
 					pager: table_pager_id,
 					searchBtn: true,
 					export_btn: false,
