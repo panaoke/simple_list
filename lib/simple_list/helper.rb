@@ -39,8 +39,8 @@ module SimpleList
 		end
 
 		def list_per_page
-			per_page = (params[:per_page] || params[:rows] || model_list_config[:per_page] || list_config[:per_page] || 10).to_i
-			per_page = 10 if per_page == 0
+			per_page = (params[:per_page] || model_list_config[:per_page] || list_config[:per_page] || 20).to_i
+			per_page = 20 if per_page == 0
 			per_page
 		end
 
@@ -49,11 +49,7 @@ module SimpleList
 				if respond_to?("list_column_#{column_name}")
 					result[column_name] = self.send("list_column_#{column_name}", record)
 				else
-					if record.respond_to?(column_name)
-						result[column_name] = record.send(column_name)
-					else
-						result[column_name] = nil
-					end
+					result[column_name] = record.respond_to?(column_name) ? record.send(column_name) : nil
 				end
 				result
 			end
